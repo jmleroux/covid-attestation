@@ -1,0 +1,14 @@
+Attestation COVID 19
+
+Prénom = {{ user_data.firstname }}
+Nom de famille = {{ user_data.lastname }}
+
+Date de naissance = {{ user_data.birthday }}
+Ville de naissance = {{ user_data.birthcity }}
+
+Adresse = {{ user_data.street }}
+Ville = {{ user_data.postalCode }}  {{ user_data.city }}
+
+Motif de sortie = {{ justification }}
+
+Heure de début = {{ "now"|date("d/m/Y H:i", "Europe/Paris") }}

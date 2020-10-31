@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Générateur d'attestation COVID</title>
+</head>
+
+<body>
+<h1>Générateur d'attestation COVID</h1>
+
+<h3>Rappel de vous informations</h3>
+<ul>
+    <li>Prénom : {{ user_data.firstname }}</li>
+    <li>Nom : {{ user_data.lastname }}</li>
+    <li>Date de naissance : {{ user_data.birthday }}</li>
+    <li>Ville de naissance : {{ user_data.birthcity }}</li>
+    <li>Adresse : {{ user_data.street }} {{ user_data.postalCode }} {{ user_data.city }}</li>
+</ul>
+
+<p><a href="{{ path('index') }}">Modifier vos informations et votre URL personnalisée</a></p>
+
+{{ form(attestation_form) }}
+
+</body>
+</html>

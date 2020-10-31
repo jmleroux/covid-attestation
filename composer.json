@@ -1,0 +1,41 @@
+{
+    "name": "jmleroux/covid-attestation",
+    "description": "COVID19 french attestation generator",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jmleroux",
+            "email": "jmleroux.pro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "symfony/config": "^5.1",
+        "symfony/http-kernel": "^5.1",
+        "symfony/http-foundation": "^5.1",
+        "symfony/routing": "^5.1",
+        "symfony/dependency-injection": "^5.1",
+        "symfony/framework-bundle": "^5.1",
+        "symfony/yaml": "^5.1",
+        "symfony/twig-bundle": "^5.1",
+        "doctrine/annotations": "^1.11",
+        "symfony/form": "^5.1",
+        "symfony/validator": "^5.1",
+        "chillerlan/php-qrcode": "^4.2",
+        "tecnickcom/tcpdf": "^6.3"
+    },
+    "require-dev": {
+        "symfony/web-profiler-bundle": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jmleroux\\CovidAttestation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jmleroux\\CovidAttestation\\Tests\\": "tests/"
+        }
+    }
+}

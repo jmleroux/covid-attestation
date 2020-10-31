@@ -1,0 +1,3 @@
+framework:
+    secret: S0ME_SECRET
+    profiler: { only_exceptions: false }

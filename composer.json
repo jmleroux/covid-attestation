@@ -23,7 +23,8 @@
         "symfony/form": "^5.1",
         "symfony/validator": "^5.1",
         "chillerlan/php-qrcode": "^4.2",
-        "tecnickcom/tcpdf": "^6.3"
+        "tecnickcom/tcpdf": "^6.3",
+        "symfony/translation": "^5.1"
     },
     "require-dev": {
         "symfony/web-profiler-bundle": "^5.1"

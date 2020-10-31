@@ -20,7 +20,7 @@ class UserData
     public ?string $lastname;
     /**
      * @Assert\NotBlank
-     * @Assert\Length(max=10)
+     * @Assert\Length(min=8, max=10)
      */
     public ?string $birthday;
     /**

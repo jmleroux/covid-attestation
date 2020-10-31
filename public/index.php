@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 $loader = require __DIR__ . '/../vendor/autoload.php';
 AnnotationRegistry::registerLoader([$loader, 'loadClass']);
 
-$kernel = new Kernel('dev', true);
+$kernel = new Kernel('prod', false);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();

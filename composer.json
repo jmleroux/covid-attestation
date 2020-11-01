@@ -27,7 +27,9 @@
         "symfony/translation": "^5.1"
     },
     "require-dev": {
-        "symfony/web-profiler-bundle": "^5.1"
+        "symfony/web-profiler-bundle": "^5.1",
+        "symfony/phpunit-bridge": "^5.1",
+        "symfony/browser-kit": "^5.1"
     },
     "autoload": {
         "psr-4": {

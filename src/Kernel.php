@@ -33,6 +33,9 @@ class Kernel extends BaseKernel
     protected function configureContainer(ContainerConfigurator $c): void
     {
         $c->import(__DIR__ . '/../config/framework.yaml');
+        if ($this->getEnvironment() == 'test') {
+            $c->import(__DIR__ . '/../config/framework.test.yaml');
+        }
 
         // register all classes in /src/ as service
         $c->services()

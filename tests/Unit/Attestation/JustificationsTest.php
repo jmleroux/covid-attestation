@@ -58,7 +58,7 @@ class JustificationsTest extends TestCase
             'Déplacement des personnes en situation de handicap' => 'handicap',
             'Déplacement bref' => 'leasure',
             'Justice ou service public' => 'justice',
-            'Mission adminsitrative' => 'administrative',
+            'Mission administrative' => 'administrative',
             'Déplacement scolaire' => 'school',
         ];
         $this->assertEquals($expected, $justifications->getChoices());

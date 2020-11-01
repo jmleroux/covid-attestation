@@ -4,13 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Générateur d'attestation COVID</title>
+    <meta name="title" content="Générateur d'attestation de déplacement dérogatoire - COVID-19">
+    <title>Attestation de déplacement dérogatoire - JM Leroux</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
 <div class="container">
+    <h1 class="flex flex-wrap">
+        <span class="covid-title"> COVID-19 </span>
+        <span class="covid-subtitle"> Attestation de déplacement dérogatoire </span>
+    </h1>
+    <p class="description-decret">En application du décret n°2020-1310 du 29 octobre 2020 prescrivant les mesures
+        générales nécessaires pour faire
+        face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire</p>
     {% block main_content %}{% endblock %}
 </div>
 </body>

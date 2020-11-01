@@ -1,9 +1,7 @@
 {% extends "layout.html.twig" %}
 {% form_theme attestation_form 'bootstrap_4_layout.html.twig' %}
 {% block main_content %}
-    <h1>Générateur d'attestation COVID</h1>
-
-    <h3>Rappel de vous informations</h3>
+    <h2>Rappel de vous informations</h2>
     <ul>
         <li>Prénom : {{ user_data.firstname }}</li>
         <li>Nom : {{ user_data.lastname }}</li>

@@ -36,7 +36,7 @@ class Justifications
             'description' => "Convocation judiciaire ou administrative et pour se rendre dans un service public",
         ],
         'administrative' => [
-            'label' => "Mission adminsitrative",
+            'label' => "Mission administrative",
             'description' => "Participation à des missions d'intérêt général sur demande de l'autorité administrative",
         ],
         'school' => [

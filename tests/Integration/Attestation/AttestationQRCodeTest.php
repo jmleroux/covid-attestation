@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class AttestationQRCodeTest extends KernelTestCase
 {
-    public function testCovid19()
+    public function testGenerateQRCode()
     {
         self::bootKernel();
         $qrcode = new AttestationQRCode(self::$container->get('twig'));

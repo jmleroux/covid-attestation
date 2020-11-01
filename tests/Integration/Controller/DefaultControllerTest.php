@@ -18,7 +18,12 @@ class DefaultControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertResponseIsSuccessful();
         $this->assertStringNotContainsString(
-            "Vous pouvez générer vos attesations de déplacement en suivant cette url d'accès personnalisée",
+            "Vous pouvez générer vos attestations de déplacement en suivant cette url d'accès personnalisée",
+            $response->getContent()
+        );
+        $this->assertStringContainsString(
+            "En application du décret n°2020-1310 du 29 octobre 2020 prescrivant les mesures
+        générales nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire",
             $response->getContent()
         );
     }
@@ -44,7 +49,7 @@ class DefaultControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertResponseIsSuccessful();
         $this->assertStringContainsString(
-            "Vous pouvez générer vos attesations de déplacement en suivant cette url d'accès personnalisée",
+            "Vous pouvez générer vos attestations de déplacement en suivant cette url d'accès personnalisée",
             $response->getContent()
         );
         $this->assertStringContainsString(

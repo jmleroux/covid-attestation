@@ -52,8 +52,8 @@ class DefaultController extends AbstractController
         $userForm = $this->createForm(UserForm::class, $userData);
 
         $userForm->handleRequest($request);
-        if (!$userForm->isValid()) {
-            $this->redirectToRoute('index');
+        if ($userForm->isEmpty() || !$userForm->isSubmitted() || !$userForm->isValid()) {
+            return $this->redirectToRoute('index');
         }
 
         $attestationCommand = new AttestationCommand();

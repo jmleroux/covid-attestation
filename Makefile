@@ -1,6 +1,5 @@
 DOCKER_EXEC = docker-compose exec fpm
-DOCKER_RUN = docker-compose run -e XDEBUG_ENABLED=0 --rm fpm
-DOCKER_RUN_XDEBUG = docker-compose run -e XDEBUG_ENABLED=1 --rm fpm
+DOCKER_RUN = docker-compose run --rm fpm
 
 .PHONY: up
 up:
@@ -29,3 +28,11 @@ setup:
 	rm -rf vendor
 	make vendor
 	make up
+
+.PHONY: tests
+tests:
+	$(DOCKER_RUN) ./vendor/bin/simple-phpunit ${path}
+
+.PHONY: coverage
+coverage:
+	XDEBUG_ENABLED=1 $(DOCKER_RUN) vendor/bin/simple-phpunit --coverage-html var/coverage

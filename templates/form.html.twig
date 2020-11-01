@@ -1,11 +1,12 @@
 {% extends "layout.html.twig" %}
 {% form_theme user_form 'bootstrap_4_layout.html.twig' %}
 {% block main_content %}
-    <h1>Générateur d'attestation COVID</h1>
+    <h2>Remplissez en ligne votre déclaration numérique&nbsp;:</h2>
+    <p>Tous les champs sont obligatoires.</p>
     {{ form(user_form) }}
 
     {% if url %}
-        <p>Vous pouvez générer vos attesations de déplacement en suivant cette url d'accès personnalisée : <a
+        <p>Vous pouvez générer vos attesations de déplacement en suivant cette url d'accès personnalisée&nbsp;: <a
                     href="{{ url }}">{{ url }}</a></p>
         <p>Vous pouvez également ajouter cette adresse à vos favoris pour un accès plus rapide.</p>
     {% endif %}

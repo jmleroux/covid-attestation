@@ -1,7 +1,7 @@
 name: docker-compose-actions-workflow
 on: push
 jobs:
-    api-tests:
+    app-tests:
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v2

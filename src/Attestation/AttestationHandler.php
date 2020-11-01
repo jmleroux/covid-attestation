@@ -38,10 +38,12 @@ class AttestationHandler
         $txt = "Je soussigné(e),";
         $pdf->Write(0, $txt, '', 0, 'L', true);
 
-        $txt = sprintf("Mme/M. : %s %s", $attestationCommand->userData->firstname, $attestationCommand->userData->lastname);
+        $txt = sprintf("Mme/M. : %s %s", $attestationCommand->userData->firstname,
+            $attestationCommand->userData->lastname);
         $pdf->Write(0, $txt, '', 0, 'L', true);
 
-        $txt = sprintf("Né(e) le : %s à : %s", $attestationCommand->userData->birthday, $attestationCommand->userData->birthcity);
+        $txt = sprintf("Né(e) le : %s à : %s", $attestationCommand->userData->birthday,
+            $attestationCommand->userData->birthcity);
         $pdf->Write(0, $txt, '', 0, 'L', true);
 
         $txt = sprintf(
@@ -100,7 +102,7 @@ class AttestationHandler
                 $qrcode) . '" width="400" align="center">';
         $pdf->writeHTML($img, true, false, true, false, 'C');
 
-        $pdf->Output('example_002.pdf', 'I');
+        $pdf->Output($this->filename(), 'I');
     }
 
     private function createPdf(): TCPDF
@@ -136,5 +138,10 @@ class AttestationHandler
         $pdf->setCellPaddings($left = '10', $top = '', $right = '', $bottom = '');
         $pdf->Write(0, $this->justifications->justificationText($justification), '', $fill = false, 'L', $ln = true);
         $pdf->Ln();
+    }
+
+    private function filename(): string
+    {
+        return sprintf('attestation-%s_%s.pdf', date('Y-m-d'), date('H-i'));
     }
 }

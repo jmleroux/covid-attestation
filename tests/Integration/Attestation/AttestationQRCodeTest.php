@@ -32,8 +32,9 @@ class AttestationQRCodeTest extends KernelTestCase
 
         $result = $qrcode->fromCommand($command);
 
+        // Not super strict test, but I don't know how to do better
         $this->assertStringStartsWith(
-            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATEAAAExCAIAAACbBwI/AAAABnRSTlMA/wD/',
+            'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR0AAAEdCAIAAAC+CCQsAAAABnRSTlMA/wD/',
             $result
         );
     }

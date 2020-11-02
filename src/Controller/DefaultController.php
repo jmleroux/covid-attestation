@@ -82,6 +82,7 @@ class DefaultController extends AbstractController
 
         if ($attestationForm->isSubmitted() && $attestationForm->isValid()) {
             $attestationHandler->generate($attestationCommand);
+            return new Response('Your attestation has been generated.');
         }
 
         return $this->redirectToRoute('index');

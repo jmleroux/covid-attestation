@@ -9,6 +9,8 @@ Il permet de sauvegarder un lien personnalisé après rempli vos informations pe
 attestation en deux clics.
 
 Aucune information n'est stockée, aucun cookie n'est généré. Il s'agit juste d'un raccourci sur votre navigateur.
+Seuls les accès peuvent apparaitre dans les logs système. Ces données ne font l'objet d'aucun traitement statistique 
+et ne sont pas envoyée à un tiers. Les logs sont régulièrement purgés.
 
 ## Pour les développeurs
 

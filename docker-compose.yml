@@ -11,7 +11,7 @@ services:
         networks:
             - covid_attestation
         ports:
-            - '8081:80'
+            - '8088:80'
         environment:
             PHP_IDE_CONFIG: 'serverName=covid-attestation.local'
 

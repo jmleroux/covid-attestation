@@ -28,7 +28,7 @@ class AttestationQRCodeTest extends KernelTestCase
 
         $command = new AttestationCommand();
         $command->userData = $userData;
-        $command->justification = 'school';
+        $command->justifications = ['school'];
 
         $result = $qrcode->fromCommand($command);
 

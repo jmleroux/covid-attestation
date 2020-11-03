@@ -74,7 +74,7 @@ class AttestationHandler
         $pdf->SetY($y);
         $txt = sprintf("Fait à : %s", $attestationCommand->userData->city);
         $pdf->Write(0, $txt, '', 0, 'L', true);
-        $txt = sprintf("Le : %s à %s", date('d/m/Y'), date('H:i'));
+        $txt = sprintf("Le : %s", $attestationCommand->date->format('d/m/Y à H:i'));
         $pdf->Write(0, $txt, '', 0, 'L', true);
         $txt = "(Date et heure de début de sortie à mentionner obligatoirement)";
         $pdf->Write(0, $txt, '', 0, 'L', true);
@@ -129,7 +129,7 @@ class AttestationHandler
     private function writeJustification(string $justification, AttestationCommand $attestationCommand, TCPDF $pdf)
     {
         $imagePath = realpath(__DIR__ . '/../../public/images/unchecked.jpg');
-        if ($justification === $attestationCommand->justification) {
+        if (in_array($justification, $attestationCommand->justifications)) {
             $imagePath = realpath(__DIR__ . '/../../public/images/checked.jpg');
         }
         $pdf->Image($imagePath, $pdf->GetX(), $pdf->GetY(), 5, 5, 'JPG', '', 'L', true);

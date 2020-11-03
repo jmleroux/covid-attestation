@@ -22,7 +22,9 @@ class AttestationForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('justification', ChoiceType::class, [
+            ->add('justifications', ChoiceType::class, [
+                'multiple' => true,
+                'expanded' => true,
                 'label' => 'Motif de sortie',
                 'choices' => $this->justifications->getChoices(),
             ])

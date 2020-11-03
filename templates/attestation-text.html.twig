@@ -3,5 +3,5 @@ Nom: {{ user_data.lastname }};
 Prenom: {{ user_data.firstname }};
 Naissance: {{ user_data.birthday }} a {{ user_data.birthcity }};
 Adresse: {{ user_data.street }} {{ user_data.postalCode }}  {{ user_data.city }};
-Sortie {{ "now"|date("d/m/Y", "Europe/Paris") }} a {{ "now"|date("H:i", "Europe/Paris") }};
-Motifs: {{ justification }};
+Sortie {{ date|date("d/m/Y", "Europe/Paris") }} a {{ date|date("H:i", "Europe/Paris") }};
+Motifs: {{ justifications|join(', ') }};

@@ -19,7 +19,8 @@ class AttestationQRCode
         return (new QRCode)->render(
             $this->twig->render('attestation-text.html.twig', [
                 'user_data' => $attestationCommand->userData->normalize(),
-                'justification' => $attestationCommand->justification
+                'justifications' => $attestationCommand->justifications,
+                'date' => $attestationCommand->date,
             ])
         );
     }

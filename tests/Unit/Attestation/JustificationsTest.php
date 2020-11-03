@@ -14,26 +14,26 @@ class JustificationsTest extends TestCase
     {
         $justifications = new Justifications();
 
-        $expectedKeys = [
-            0 => 'pro',
-            1 => 'shopping',
-            2 => 'health',
-            3 => 'family',
-            4 => 'handicap',
-            5 => 'leasure',
-            6 => 'justice',
-            7 => 'administrative',
-            8 => 'school',
+        $expected = [
+            'travail',
+            'achats',
+            'sante',
+            'famille',
+            'handicap',
+            'sport_animaux',
+            'convocation',
+            'missions',
+            'enfants',
         ];
 
-        $this->assertEquals($expectedKeys, $justifications->justificationsKeys());
+        $this->assertEquals($expected, $justifications->justificationsKeys());
     }
 
     public function testShortText()
     {
         $justifications = new Justifications();
 
-        $this->assertEquals("Déplacement scolaire", $justifications->justificationShortText('school'));
+        $this->assertEquals("Déplacement scolaire", $justifications->justificationShortText('enfants'));
     }
 
     public function testText()
@@ -42,7 +42,7 @@ class JustificationsTest extends TestCase
 
         $this->assertEquals(
             "Déplacement pour chercher les enfants à l’école et à l’occasion de leurs activités périscolaires",
-            $justifications->justificationText('school')
+            $justifications->justificationText('enfants')
         );
     }
 
@@ -51,16 +51,17 @@ class JustificationsTest extends TestCase
         $justifications = new Justifications();
 
         $expected = [
-            'Déplacement professionnel' => 'pro',
-            'Achats de première nécessité' => 'shopping',
-            'Santé' => 'health',
-            'Motif familial impérieux' => 'family',
+            'Déplacement professionnel' => 'travail',
+            'Achats de première nécessité' => 'achats',
+            'Santé' => 'sante',
+            'Motif familial impérieux' => 'famille',
             'Déplacement des personnes en situation de handicap' => 'handicap',
-            'Déplacement bref' => 'leasure',
-            'Justice ou service public' => 'justice',
-            'Mission administrative' => 'administrative',
-            'Déplacement scolaire' => 'school',
+            'Déplacement bref' => 'sport_animaux',
+            'Convocation justice ou service public' => 'convocation',
+            'Mission administrative' => 'missions',
+            'Déplacement scolaire' => 'enfants',
         ];
+
         $this->assertEquals($expected, $justifications->getChoices());
     }
 }

@@ -2,3 +2,4 @@ vendor
 var/*
 
 .phpunit.result.cache
+docker-compose.override.yml

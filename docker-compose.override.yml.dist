@@ -4,3 +4,11 @@ services:
     nginx:
         ports:
             - '8111:80'
+
+    fpm:
+        environment:
+            XDEBUG_CONFIG: 'remote_host=172.17.0.1'
+            PHP_IDE_CONFIG: 'serverName=covid-attestation-cli'
+            PHP_XDEBUG_REMOTE_HOST: 172.17.0.1
+        volumes:
+            - ~/.composer:/home/docker/.composer

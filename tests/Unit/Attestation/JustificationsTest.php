@@ -16,7 +16,7 @@ class JustificationsTest extends TestCase
 
         $expected = [
             'travail',
-            'achats',
+            'culture',
             'sante',
             'famille',
             'handicap',
@@ -41,7 +41,7 @@ class JustificationsTest extends TestCase
         $justifications = new Justifications();
 
         $this->assertEquals(
-            "Déplacement pour chercher les enfants à l’école et à l’occasion de leurs activités périscolaires",
+            "9. Déplacements pour chercher les enfants à l’école et à l’occasion de leurs activités périscolaires",
             $justifications->justificationText('enfants')
         );
     }
@@ -52,7 +52,7 @@ class JustificationsTest extends TestCase
 
         $expected = [
             'Déplacement professionnel' => 'travail',
-            'Achats de première nécessité' => 'achats',
+            'Culture' => 'culture',
             'Santé' => 'sante',
             'Motif familial impérieux' => 'famille',
             'Déplacement des personnes en situation de handicap' => 'handicap',
@@ -62,6 +62,6 @@ class JustificationsTest extends TestCase
             'Déplacement scolaire' => 'enfants',
         ];
 
-        $this->assertEquals($expected, $justifications->getChoices());
+        $this->assertSame($expected, $justifications->getChoices());
     }
 }

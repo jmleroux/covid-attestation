@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jmleroux\CovidAttestation\Attestation;
 
-use DateInterval;
 use TCPDF;
 
 class AttestationHandler
@@ -81,7 +80,6 @@ class AttestationHandler
         $txt = sprintf("Fait à : %s", $attestationCommand->userData->city);
         $pdf->Write(0, $txt, '', 0, 'L', true);
 
-        $attestationCommand->date->add(new DateInterval('PT1H'));
         $txt = sprintf("Le : %s", $attestationCommand->date->format('d/m/Y à H:i'));
         $pdf->Write(0, $txt, '', 0, 'L', true);
         $txt = "(Date et heure de début de sortie à mentionner obligatoirement)";

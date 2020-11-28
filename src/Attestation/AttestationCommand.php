@@ -10,7 +10,7 @@ class AttestationCommand
 {
     public function __construct()
     {
-        $this->date = new \DateTime();
+        $this->date = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
     }
 
     /**

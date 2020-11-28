@@ -27,24 +27,27 @@ class AttestationHandler
 
         $txt = "ATTESTATION DE DÉPLACEMENT DÉROGATOIRE";
         $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+        $pdf->Ln(3);
 
-        $pdf->SetFont('times', '', 10);
-        $txt = "En application des mesures générales nécessaires pour faire face à l’épidémie de covid-19 dans le cadre de l’état d’urgence sanitaire.";
+        $pdf->SetFont('helvetica', 'I', 10);
+        $txt = "En application du décret no 2020-1310 du 29 octobre 2020 prescrivant les mesures générales nécessaires
+        pour faire face à l’épidémie de COVID-19 dans le cadre de l’état d’urgence sanitaire";
         $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
         $pdf->Ln();
+        $pdf->Ln();
+        $pdf->Ln();
 
-        $pdf->SetFont('times', '', 12);
-        $txt = "Je soussigné(e),";
-        $pdf->Write(0, $txt, '', 0, 'L', true);
-
+        $pdf->SetFont('helvetica', '', 11);
         $txt = sprintf("Mme/M. : %s %s", $attestationCommand->userData->firstname,
             $attestationCommand->userData->lastname);
         $pdf->Write(0, $txt, '', 0, 'L', true);
+        $pdf->Ln(1);
 
         $txt = sprintf("Né(e) le : %s à : %s", $attestationCommand->userData->birthday,
             $attestationCommand->userData->birthcity);
         $pdf->Write(0, $txt, '', 0, 'L', true);
+        $pdf->Ln(1);
 
         $txt = sprintf(
             "Demeurant : %s %s %s",
@@ -56,8 +59,13 @@ class AttestationHandler
 
         $pdf->Ln();
 
-        $pdf->SetFont('times', '', 12);
-        $txt = "certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé en application des mesures générales nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire ¹ :";
+        $pdf->SetFont('helvetica', '', 11);
+        $txt = "certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par le décret n°2020-1310 du 29 octobre 2020 prescrivant les mesures générales nécessaires pour faire face à l’épidémie de COVID-19 dans le cadre de l’état d’urgence sanitaire :";
+        $pdf->Write(0, $txt, '', 0, 'L', true);
+
+        $pdf->Ln(1);
+        $pdf->SetFont('helvetica', 'I', 8);
+        $txt = "Note : Les personnes souhaitant bénéficier de l’une de ces exceptions doivent se munir s’il y a lieu, lors de leurs déplacements hors de leur domicile, d’un document leur permettant de justifier que le déplacement considéré entre dans le champ de l’une de ces exceptions";
         $pdf->Write(0, $txt, '', 0, 'L', true);
 
         $pdf->Ln();
@@ -66,12 +74,9 @@ class AttestationHandler
             $this->writeJustification($justificationsKey, $attestationCommand, $pdf);
         }
 
-        $y = $pdf->GetY();
-        $qrcode = $this->attestationQRCode->fromCommand($attestationCommand);
-        $img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $qrcode) . '" width="150">';
-        $pdf->writeHTML($img, true, false, true, false, 'R');
+        $pdf->setCellPaddings($left = 0, $top = '', $right = '', $bottom = '');
 
-        $pdf->SetY($y);
+        $pdf->SetY(265);
         $txt = sprintf("Fait à : %s", $attestationCommand->userData->city);
         $pdf->Write(0, $txt, '', 0, 'L', true);
         $txt = sprintf("Le : %s", $attestationCommand->date->format('d/m/Y à H:i'));
@@ -79,28 +84,18 @@ class AttestationHandler
         $txt = "(Date et heure de début de sortie à mentionner obligatoirement)";
         $pdf->Write(0, $txt, '', 0, 'L', true);
 
-        $pdf->Ln();
-
-        $txt = "Signature :";
-        $pdf->Write(0, $txt, '', 0, 'L', true);
-        $pdf->Ln();
-        $pdf->Ln();
-        $pdf->Ln();
-        $pdf->Ln();
-        $pdf->Ln();
-
-        $pdf->SetFont('times', 'I', 8);
-        $txt = "¹ : Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il y a lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant de justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions.
-² : A utiliser par les travailleurs non-salariés, lorsqu'ils ne peuvent disposer d'un justificatif de déplacement établi par leur employeur.
-³ : Y compris les acquisitions à titre gratuit (distribution de denrées alimentaires...) et les déplacements liés à la perception de prestations sociales et au retrait d'espèces.";
-        $pdf->Write(0, $txt, '', 0, 'L', true);
+        $pdf->SetY(238);
+        $pdf->setCellPaddings($left = 0, $top = 0, $right = 0, $bottom = 0);
+        $qrcode = $this->attestationQRCode->fromCommand($attestationCommand);
+        $img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '', $qrcode) . '" width="150">';
+        $pdf->writeHTML($img, true, false, true, false, 'R');
 
         $pdf->AddPage();
 
         $qrcode = $this->attestationQRCode->fromCommand($attestationCommand);
         $img = '<img src="@' . preg_replace('#^data:image/[^;]+;base64,#', '',
-                $qrcode) . '" width="400" align="center">';
-        $pdf->writeHTML($img, true, false, true, false, 'C');
+                $qrcode) . '" width="400">';
+        $pdf->writeHTML($img, true, false, true, false, 'L');
 
         $pdf->Output($this->filename(), 'I');
     }
@@ -117,11 +112,11 @@ class AttestationHandler
         $pdf->setPrintHeader(false);
         $pdf->setPrintFooter(false);
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
+        $pdf->SetMargins(PDF_MARGIN_LEFT, 15, PDF_MARGIN_RIGHT);
+        $pdf->SetAutoPageBreak(true, 15);
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-        $pdf->SetFont('times', 'BI', 20);
+        $pdf->SetFont('helvetica', 'B', 15);
 
         return $pdf;
     }
@@ -134,7 +129,7 @@ class AttestationHandler
         }
         $pdf->Image($imagePath, $pdf->GetX(), $pdf->GetY(), 5, 5, 'JPG', '', 'L', true);
 
-        $pdf->SetFont('times', '', 10);
+        $pdf->SetFont('helvetica', '', 10);
         $pdf->setCellPaddings($left = '10', $top = '', $right = '', $bottom = '');
         $pdf->Write(0, $this->justifications->justificationText($justification), '', $fill = false, 'L', $ln = true);
         $pdf->Ln();

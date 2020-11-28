@@ -16,7 +16,7 @@ class JustificationsTest extends TestCase
 
         $expected = [
             'travail',
-            'culture',
+            'achats_culturel_cultuel',
             'sante',
             'famille',
             'handicap',
@@ -33,7 +33,7 @@ class JustificationsTest extends TestCase
     {
         $justifications = new Justifications();
 
-        $this->assertEquals("Déplacement scolaire", $justifications->justificationShortText('enfants'));
+        $this->assertEquals("Déplacement pour motif scolaire", $justifications->justificationShortText('enfants'));
     }
 
     public function testText()
@@ -52,14 +52,14 @@ class JustificationsTest extends TestCase
 
         $expected = [
             'Déplacement professionnel' => 'travail',
-            'Culture' => 'culture',
-            'Santé' => 'sante',
+            'Achats, culture ou lieu de culte' => 'achats_culturel_cultuel',
+            'Santé : consultation, pharmacie' => 'sante',
             'Motif familial impérieux' => 'famille',
             'Déplacement des personnes en situation de handicap' => 'handicap',
-            'Déplacement bref' => 'sport_animaux',
+            'Déplacement de loisir' => 'sport_animaux',
             'Convocation justice ou service public' => 'convocation',
             'Mission administrative' => 'missions',
-            'Déplacement scolaire' => 'enfants',
+            'Déplacement pour motif scolaire' => 'enfants',
         ];
 
         $this->assertSame($expected, $justifications->getChoices());
